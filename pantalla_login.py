@@ -80,7 +80,10 @@ class PantallaLogin:
             width=320,
             border_color="#cbb98a",
             focused_border_color=GOLD,
-            label_style=ft.TextStyle(color=NAVY),
+            color=CREAM,
+            label_style=ft.TextStyle(color="#e8e0d0"),
+            hint_style=ft.TextStyle(color="#6b7a99"),
+            cursor_color=GOLD,
             on_submit=self._enviar_codigo,
         )
         self.texto_error = ft.Text("", color="#b85450", size=12)
@@ -139,7 +142,9 @@ class PantallaLogin:
             text_align=ft.TextAlign.CENTER,
             border_color="#cbb98a",
             focused_border_color=GOLD,
-            label_style=ft.TextStyle(color=NAVY),
+            color=CREAM,
+            label_style=ft.TextStyle(color="#e8e0d0"),
+            cursor_color=GOLD,
             on_submit=self._confirmar_codigo,
         )
         self.texto_error_codigo = ft.Text("", color="#b85450", size=12)
