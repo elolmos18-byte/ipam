@@ -29,6 +29,28 @@ from typing import Optional
 
 DB_PATH = "web_app.db"
 
+
+def _cargar_credenciales_de_archivo():
+    """Si existe un archivo .env al lado de este script, carga
+    GMAIL_USER y GMAIL_APP_PASSWORD desde ahi -- asi no hace falta
+    escribir 'export' cada vez que se abre una terminal nueva (las
+    variables de entorno se pierden al cerrar la sesion; un archivo
+    en disco no)."""
+    ruta_env = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    if not os.path.exists(ruta_env):
+        return
+    with open(ruta_env, encoding="utf-8") as f:
+        for linea in f:
+            linea = linea.strip()
+            if not linea or linea.startswith("#") or "=" not in linea:
+                continue
+            clave, valor = linea.split("=", 1)
+            # No pisar una variable de entorno real si ya estaba seteada
+            os.environ.setdefault(clave.strip(), valor.strip())
+
+
+_cargar_credenciales_de_archivo()
+
 GMAIL_USER = os.environ.get("GMAIL_USER", "")
 GMAIL_APP_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
 
