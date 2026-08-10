@@ -150,4 +150,4 @@ def main(page: ft.Page):
 if __name__ == "__main__":
     con_web = ae.inicializar_db("web_app.db")
     cargar_catalogo_compartido()
-    ft.run(main, view=ft.AppView.WEB_BROWSER, port=8550)
+    ft.run(main, view=ft.AppView.WEB_BROWSER, port=8550, name="ipam")
