@@ -60,6 +60,16 @@ def inicializar_db(db_path: str = DB_PATH) -> sqlite3.Connection:
             token TEXT UNIQUE NOT NULL,
             creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
+
+        CREATE TABLE IF NOT EXISTS lista_compras (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            usuario_id INTEGER NOT NULL REFERENCES usuarios_web(id),
+            producto_nombre TEXT NOT NULL,
+            marca TEXT,
+            tienda_id TEXT NOT NULL,
+            precio REAL NOT NULL,
+            creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
         """
     )
     con.commit()
